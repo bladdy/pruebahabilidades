@@ -1,0 +1,27 @@
+<h3 class="mt-3"> Listado de mis Pokemons Favoritos</h3>
+<hr>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Foto</th>
+            <th>Nombre</th>
+            <th>Alias</th>
+            <th>Favorito</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let poke of pokemons" [ngStyle]="{ 'heigth':'65px'}">
+            <td >{{poke.id}}</td>
+            <td >
+                <img [src]="poke.url" [alt]="poke.name"[ngStyle]="{ 'width':'65px'}"/>
+            </td>
+            <td >{{poke.name}}</td>
+            <td >{{poke.alias}}</td>
+            <td ><button class="btn btn-warning" (click)="editFavorite(this.poke)"><i class="fa fa-star" aria-hidden="true"></i>Edit</button> 
+                &nbsp;
+                <button class="btn btn-danger" (click)="deleteFavorite(this.poke)"><i class="fa fa-star" aria-hidden="true" ></i>Delete</button> </td>
+        </tr>
+    </tbody>
+</table>

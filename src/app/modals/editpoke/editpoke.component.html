@@ -1,0 +1,59 @@
+<div class="fondo-modals" [class.hide]="storageService.hideModal">
+    <div class="modal fade bs-example-modal-lg show" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        style="display: block; padding-right: 17px;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myLargeModalLabel">Edit Poke Fav</h4>
+                    <button type="button"class="btn btn-danger waves-effect text-left" data-dismiss="modal" (click)="closeFavorite()"
+                        aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="pokeForm!" (submit)="guardarPoke()">
+                        <div class="row">
+                            <div class="col">
+                                <img [src]="poke.url"
+                                    alt="" width="300" height="260">
+                            </div>
+                            <div class=" col">
+                                <div class="form-group">
+                                    <label for="exampleInputPa">No. Poke</label>
+                                    <input type="text" class="form-control" 
+                                    formControlName="id"
+                                    [(ngModel)]="poke.id"
+                                    readonly placeholder="Numero">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPa">Name</label>
+                                    <input type="text" class="form-control" 
+                                    [(ngModel)]="poke.name"
+                                    formControlName="name" readonly placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPa">Alias</label>
+                                    <input type="text" class="form-control" 
+                                    [(ngModel)]="poke.alias"
+                                    formControlName="alias" placeholder="Alias">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="exampleInputPa">Create At</label>
+                                    <input type="text" formControlName="createAt"
+                                    [(ngModel)]="poke.createAt"
+                                    class="form-control" readonly placeholder="Create At">
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success waves-effect text-left">Edit</button>
+                    <button type="button" class="btn btn-danger waves-effect text-left" 
+                        data-dismiss="modal"  (click)="closeFavorite()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<h3 class="mt-3"> Listado de Pokemon</h3>
+<hr>
+<div class="container">
+    <div class="row">
+      <div class="col-3">
+          
+          <button class="btn btn-primary" (click)="prevPages()"><<</button>
+          &nbsp;
+          <button class="btn btn-primary" (click)="nextPages()" [disabled]="(pokemons | filtro: page : busqueda).length === 0">>></button>
+      </div>
+      <div class="col-3">
+      </div>
+      <div class="col-6">
+        <input
+        type="text"
+        class="form-control m-2"
+        placeholder="Buscar Pokemon"
+        #txtBuscar
+        (keyup)="buscarPokemons(txtBuscar.value)"/>
+      </div>
+    </div>
+  </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Foto</th>
+            <th>Nombre</th>
+            <th>Alias</th>
+            <th>Favorito</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let poke of pokemons | filtro: page : busqueda " [ngStyle]="{ 'heigth':'65px'}">
+            <td >{{poke.id}}</td>
+            <td >
+                <img [src]="poke.url" [alt]="poke.name"[ngStyle]="{ 'width':'65px'}"/>
+            </td>
+            <td >{{poke.name}}</td>
+            <td >{{poke.alias}}</td>
+            <td ><button class="btn btn-success" (click)="addFavorite(this.poke)"><i class="fa fa-star" aria-hidden="true"></i>Fav</button> </td>
+        </tr>
+    </tbody>
+</table>
